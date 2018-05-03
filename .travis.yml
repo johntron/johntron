@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- node
+env:
+  global:
+    secure: iPee/cQNrkKMR26WlXAu0a5cXPQCTyA2Wv1KG2XFZpfAhLSJ/GNL0taXm3z0iid8cLvYD6P/6Gw+yqXF1/7mMMOvTNrPIPDY0O/rYcqXkhMWZcwCxZufsrvoKQLzY/GykT/rvWYWZ81QLGxM95AbJ7LjyfW3dZ002UFszksNWJB61dwE1F8dG9MJDbQ0E16SpwNarE/4/QgQG4uxjIA57Md25i8ToxWQfaoAISwiBCPIv1ujTLuqr8iA0ePq/GEWUYDtnhrFEjE3Bp5abMYn2nTSwktHqaK4IXg6Lx/C8v+3zpscpSJP+1ra6F+WxJOiCBW1ZxoUk+F3IrvVviDzbtiEfRF4wgPQ3IsHG6dxIOdjTwbnTrAg9qiLbwhrM5IOI4cuyc3d4umFakhsS7B/1CF4btsE4qkwPlMgEKFb05mpCj5Fn3aNxbW2/oYSPhCGto4zUi95l/YWkR7bkQz5ELTRIzoX7QwAKxQnbGMlwz5KJ4tgwCWR66YDvKIMWcsCdSDZgzUE6pMRqkNMKST93jIMkyEvSSZpAusFcb9W5fTNk5/6DbeDe8CC2xUuzATnq9VjrSnfyHME44HKTT9zq4Mv38Se0FwmKeyrTFEblVLkv6P5p8Tu0TTzOoMckJQbnUTVp9GcI3nQYyVFbdKGmOUTS6Rip8/vqDsPOCH6kjA=
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm install -g greenkeeper-lockfile@1
+before_script:
+- greenkeeper-lockfile-update
+- '[ -e "./cc-test-reporter" ] || curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
+- chmod +x ./cc-test-reporter
+- ./cc-test-reporter before-build
+script:
+- commitlint-travis
+- npm test
+after_script:
+- greenkeeper-lockfile-upload
+- npm run coverage
+- codecov
+- ./cc-test-reporter after-build --coverage-input-type lcov --debug --exit-code $TRAVIS_TEST_RESULT
