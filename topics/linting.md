@@ -1,4 +1,5 @@
 # Linting
 
 ## Related
-* [sonarwhal](https://sonarwhal.com/docs/user-guide/rules/)
+
+-   [sonarwhal](https://sonarwhal.com/docs/user-guide/rules/)
