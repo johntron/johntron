@@ -1,6 +1,7 @@
-const index = require('./index.js');
 const assert = require('assert');
+const {it} = require('mocha');
+const index = require('.');
 
 it('Should return true when called', () => {
-  assert.equal(index(), true);
+	assert.equal(index(), true);
 });
