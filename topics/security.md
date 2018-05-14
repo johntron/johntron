@@ -12,4 +12,4 @@
 ## Outstanding questions
 
 -   Read DevSecOps book from O'Reilly
--   Learn about [BeyondCorp](https://cloud.google.com/beyondcorp/)
+-   Learn about [BeyondCorp](https://cloud.google.com/beyondcorp/) (esp. Google's [access proxy](https://ai.google/research/pubs/pub45728)-)
