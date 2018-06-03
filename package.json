@@ -34,7 +34,7 @@
     "codecov": "^3.0.1",
     "husky": "^0.14.3",
     "mocha": "^5.1.1",
-    "nyc": "^11.7.1",
+    "nyc": "^12.0.2",
     "remark-cli": "^5.0.0",
     "remark-lint-no-dead-urls": "^0.3.0",
     "remark-preset-lint-consistent": "^2.0.1",
