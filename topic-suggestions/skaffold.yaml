@@ -1,0 +1,10 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: topic-suggestions
+    workspace: .
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes.yaml

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: topic-suggestions
+  labels:
+    app: topic-suggestions
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: topic-suggestions
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: topic-suggestions-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: topic-suggestions
+        version: v1
+    spec:
+      containers:
+      - name: topic-suggestions
+        image: topic-suggestions:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
