@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: history
+  labels:
+    app: history
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: history
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: history
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: history
+    spec:
+      containers:
+      - name: history
+        image: istio/examples-bookinfo-productpage-v1:1.8.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
