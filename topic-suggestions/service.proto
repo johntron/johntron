@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "TopicSuggestions";
+option objc_class_prefix = "TS";
+
+package johntron;
+
+service TopicSuggestions {
+  rpc GetTopics (TopicsRequest) returns (TopicsReply) {}
+}
+
+// The request message containing the user's name.
+message TopicsRequest {
+  string corpus = 1;
+}
+
+message TopicsReply {
+  string topics = 1;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "topic-suggestions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "build": "cp ../protos/topic-suggestions.proto .",
+    "start": "node src/api.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
+    "grpc": "^1.13.1"
+  }
+}
