@@ -3,8 +3,16 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/johntron/johntron.svg)](https://greenkeeper.io/)
 [![codecov](https://codecov.io/gh/johntron/johntron/branch/master/graph/badge.svg)](https://codecov.io/gh/johntron/johntron)
 
-# Directories
 
--   docs/ – Github-hosted pages
--   projects/ – potential / actual projects
--   topics/ – information about various software engineering related topics
+# Reference
+
+- [Creating an Effective Developer Experience on Kubernetes
+](https://www.youtube.com/watch?v=h_Nxm9Huz30&feature=youtu.be)
+
+# Todo
+
+- Figure out CI/CD
+- Figure out monitoring/tracing (Prometheus / Zipkin)
+* How to use Google IAP for BeyondCorp security?
+* Add node docker image / build dockerfile from node
+* Does Azure support Kubernetes? Istio?
