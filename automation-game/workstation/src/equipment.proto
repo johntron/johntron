@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+//import "google/api/annotations.proto";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "Equipment";
+option objc_class_prefix = "TS";
+
+package johntron;
+
+service Equipment {
+    rpc configure(OutputConfiguration) returns (EquipmentStatus) {}
+    rpc run(Input) returns (RunStatus) {}
+}
+
+message OutputConfiguration {
+    string type = 1;
+    string address = 2;
+}
+message EquipmentStatus {
+    string state = 1;
+}
+message Input{
+    string type = 1;
+}
+message RunStatus{
+    string status = 1;
+}
