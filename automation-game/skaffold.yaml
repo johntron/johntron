@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: workstation
+    workspace: ./workstation
+  - imageName: equipment
+    workspace: ./equipment
+deploy:
+  kubectl:
+    manifests:
+    - ./automation-game.yml

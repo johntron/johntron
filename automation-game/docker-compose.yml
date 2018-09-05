@@ -1,0 +1,21 @@
+version: '3'
+services:
+  workstation:
+    build: .
+    ports:
+    - 8080:80
+#    command: npm run workstation
+
+
+  inventory:
+    build: .
+    command: equipment
+#    ports:
+#    - 8080:80
+
+
+  miner:
+    build: .
+    command: equipment
+#    ports:
+#    - 8080:80
