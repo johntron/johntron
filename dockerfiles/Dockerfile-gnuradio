@@ -1,0 +1,9 @@
+# To use:
+## Launch XQuartz
+## Allow access to XQuartz's XServer from your machne with: /usr/X11/bin/xhost + $(hostname)
+## Build the container like: docker build -t xeyes .
+## Run the X11 GUI app with: docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$(hostname):0 xeyes
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt install -y gnuradio-dev
+ENTRYPOINT ["gnuradio-companion"]
