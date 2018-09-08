@@ -6,4 +6,4 @@
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt install -y gnuradio-dev
-ENTRYPOINT ["gnuradio-companion"]
+CMD ["gnuradio-companion"]
