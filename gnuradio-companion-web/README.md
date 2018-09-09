@@ -7,11 +7,13 @@
     C(Compile GRC w/gro-osmocom)
     B-->D(Test rtl_tcp source block w/Docker)
     C-->D
+    P(Simulated signal)-->M(Sample)
+    M-->N(Controlport visualization)
+    N-->O(Controlport config change)
+    O-->Q(Compare approach vs. custom blocks)
+    E(Audio streaming?)
     G(Webserver)-->H(Run gr subprocess)
     H-->I(Load / run XML)
-    J(FFT sink)-->K(FFT visualization)
-    E(Audio streaming?)
-    F(Control and data protocols?)
 
 
 ## Running
@@ -33,6 +35,7 @@ Start the runner (from gnuradio-runner directory):
 * [Blocks tree]
 * [Flow graph DTD]
 * [JSON / XML conversion] (data2xml)
+* [GNU Radio RPC suggestions]
 
 
 [Mermaid]: https://mermaidjs.github.io/mermaid-live-editor/
@@ -43,3 +46,4 @@ Start the runner (from gnuradio-runner directory):
 [Blocks tree]: https://github.com/gnuradio/gnuradio/blob/adaa7a265eef17d3b2f9a991e944fe20677b069b/gr-blocks/grc/blocks_block_tree.xml
 [Flow graph DTD]: https://github.com/gnuradio/gnuradio/blob/adaa7a265eef17d3b2f9a991e944fe20677b069b/grc/core/flow_graph.dtd
 [JSON / XML conversion]: https://npms.io/search?q=json+to+xml
+[GNU Radio RPC suggestions]: http://lists.ettus.com/pipermail/usrp-users_lists.ettus.com/2016-June/048742.html
