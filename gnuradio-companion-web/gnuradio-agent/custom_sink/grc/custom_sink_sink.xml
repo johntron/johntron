@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<block>
+    <name>sink</name>
+    <key>custom_sink</key>
+    <category>[custom_sink]</category>
+    <import>from gnuradio import custom_sink
+import numpy</import>
+    <make>custom_sink.sink($type.type, $vector_length)</make>
+    <param>
+        <name>Type</name>
+        <key>type</key>
+        <type>enum</type>
+        <option>
+            <name>Complex</name>
+            <key>complex</key>
+            <opt>type:numpy.complex64</opt>
+        </option>
+        <option>
+            <name>Float</name>
+            <key>float</key>
+            <opt>type:numpy.float32</opt>
+        </option>
+        <option>
+            <name>Int</name>
+            <key>int</key>
+            <opt>type:numpy.int32</opt>
+        </option>
+        <option>
+            <name>Short</name>
+            <key>short</key>
+            <opt>type:numpy.int16</opt>
+        </option>
+        <option>
+            <name>Byte</name>
+            <key>byte</key>
+            <opt>type:numpy.int32</opt>
+        </option>
+    </param>
+    <param>
+        <name>Vec Length</name>
+        <key>vector_length</key>
+        <value>1</value>
+        <type>int</type>
+    </param>
+    <sink>
+        <name>in</name>
+        <type>$type</type>
+        <vlen>$vector_length</vlen>
+    </sink>
+</block>

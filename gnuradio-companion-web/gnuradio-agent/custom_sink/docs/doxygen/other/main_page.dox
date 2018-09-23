@@ -1,0 +1,10 @@
+/*! \mainpage
+
+Welcome to the GNU Radio CUSTOM_SINK Block
+
+This is the intro page for the Doxygen manual generated for the CUSTOM_SINK
+block (docs/doxygen/other/main_page.dox). Edit it to add more detailed
+documentation about the new GNU Radio modules contained in this
+project.
+
+*/

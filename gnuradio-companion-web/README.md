@@ -7,14 +7,9 @@
     C(Compile GRC w/gro-osmocom)
     B-->D(Test rtl_tcp source block w/Docker)
     C-->D
-    P(Simulated signal)-->M(Sample)
-    M-->N(Controlport visualization)
-    N-->O(Controlport config change)
-    O-->Q(Compare approach vs. custom blocks)
-    E(Audio streaming?)
-    G(Webserver)-->H(Run gr subprocess)
-    H-->I(Load / run XML)
-
+    L(Improve data format)
+    M(Include block name)
+    K(Reuse httpconnection)
 
 ## Running
 
