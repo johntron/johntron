@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: composer
+    workspace: services/composer
+  - imageName: header
+    workspace: services/header
+deploy:
+  kubectl:
+    manifests:
+    - ./deployment.yml
