@@ -1,38 +1,38 @@
-#include "tb6612.cpp"
+#include "tb6612.h"
 #include "mbed.h"
 
-DigitalOut led(LED1);
-Motor motor(PB_4, PB_5, PB_3, PB_10);
-
 int main() {
-	motor.drive(0.5f);
-	wait(1);
-	motor.drive(-0.5f);
-	wait(1);
-	motor.stop();
-	wait(1);
-	/*
-	DigitalOut in1(PB_4);
-	DigitalOut in2(PB_5);
-	PwmOut pwm(PB_3);
-	DigitalOut standby(PB_10);
-	in1 = 1;
-	in2 = 1;
-	pwm = 0.5f;
-	standby = 1;
-	while(1) {
-		motor.drive(1.0f);
-		led = 0;
-		wait(1);
-		motor.drive(0.0f);
-		led = 1;
-		wait(1);
-	}
-	*/
+  using namespace tb6612;
+  DigitalOut led(LED1);
+  Motor left(PB_4, PB_5, PB_3, PB_10);
+  Motor right(PA_8, PA_9, PC_7, PB_10);
+  DifferentialDrive drive(left, right);
+
+  float speed = 1.0f;
+
+  while (1) {
+    drive.forward(speed);
+    wait(1);
+    drive.stop();
+    wait(1);
+    drive.back(speed);
+    wait(1);
+    drive.stop();
+    wait(1);
+    drive.left(speed);
+    wait(1);
+    drive.stop();
+    wait(1);
+    drive.right(speed);
+    wait(1);
+    drive.stop();
+    wait(1);
+  }
 }
 
 /**
  * TODO:
+ * * Rename drive.back to drive.reverse? - make consistent with Motor
  * * Flyback voltage/current?
  * * When do I integrate with simulation?
  * * Other motor

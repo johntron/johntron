@@ -5,11 +5,24 @@ Based on Michelle @ SparkFun Electronics' library for Arduino (thanks!)
 https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
 ******************************************************************************/
 
-
-#ifndef tb6612_mbed
-#define tb6612_mbed
-
 #include "motor.h"
-#include "differential_drive.h"
+#include "mbed.h"
 
-#endif
+namespace tb6612 {
+
+class DifferentialDrive {
+ public:
+  DifferentialDrive(Motor left, Motor right);
+  void forward(float speed);
+  void back(float speed);
+  void left(float speed);
+  void right(float speed);
+  void brake();
+  void stop();
+
+ protected:
+  Motor leftMotor;
+  Motor rightMotor;
+};
+
+}
