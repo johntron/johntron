@@ -4,6 +4,26 @@ The terms below are not distinct or mutually exclusive – you might use two ter
 
 It’s important to explain what we’re testing and the tools we're using. For example, someone might consider a test that exercises a single component to be both subcutaneous and a unit test, because it simulates user interactions without a browser and it’s testing a single thing / unit. In this case, we should instead explain that the thing we’re testing is one component, and the tools we're using are Enzyme with a virtual DOM. 
 
+## Tips
+
+From the testdouble.js guys:
+
+> ... either the purpose of the test is to verify an invocation or to ensure that the integrated unit behaves as expected; it can't be both. either the purpose of the test is to verify an invocation or to ensure that the integrated unit behaves as expected; it can't be both. Either the test will be needlessly coupled to its implementation or it will be needlessly coupled to its depended-on component.
+
+Watch out for test double pollution: leaving a double in place after a test completes (or fails prematurely!) can cause other tests to fail.
+
+2.5 types of tests:
+
+* Those that simply accept arguments and return values
+* Those that call dependencies
+* Those that do both – these are usually a mixture of abstraction layers, so try to avoid. Tip: "If a function outsources, say, three of its four responsibilities, it's usually better off outsourcing the fourth to a dependency as well so it can be cleanly described and tested as a collaborator function, as described above"
+
+Don't use test doubles in integration tests
+
+More from testdouble.js people:
+
+> wrap 3rd-party dependencies in adapter functions to fake those adapters instead of the 3rd-party API—this will decrease the degree to which test doubles will leak throughout the integrated test suite and afford some opportunity for responding to hard-to-test situations by improving the API design of your adapters.
+
 ### Terms to avoid 
 
 * Subcutaneous – “just below the surface”. In our case, the “surface” is the browser UI, so a subcutaneous test is one that operates at a high level, but no browser; Unfortunately, this definition can lead to confusion in the world of Components, because a single component can be tested without a browser but at a high level using a virtual DOM and simulated interactions. Instead of using this term, we should use “multi-component integration” or “single-component” – see below. 
@@ -25,6 +45,12 @@ It’s important to explain what we’re testing and the tools we're using. For 
 * Virtual DOM – a virtual representation of the browser’s DOM; used to simulate a browser; used internally by React and Enzyme 
 * Enzyme – test tool we use to write component-level tests with a virtual DOM; 
 * Snapshot – captures HTML from DOM then compares with future runs to catch visual regressions; used w/Enzyme 
+
+## Things to agree on as a group
+
+* How will we test the integration of "units"?
+* How to tell what is tested and what is not?
+* How to do mocking - are partial mocks allowed?
 
 
 ## Considerations 
@@ -60,7 +86,12 @@ It’s important to explain what we’re testing and the tools we're using. For 
 * Reliability: high, but can break when dependencies / mocks change 
 * Performance: high, but low if we don’t mock out AJAX and other asynchronous code 
 * Criticality / required confidence: approximates browser, but hard to explain this to stakeholders 
-* Browser technologies: no guarantee simulated events match real events, so not good way to test stuff like scrolling. 
+* Browser technologies: no guarantee simulated events match real events, so not good way to test stuff like scrolling.
+
+
+### Multi-unit integration
+
+* TBD
 
 ### Single-component w/virtual DOM 
 
@@ -79,3 +110,12 @@ Same as two-component, but typically uses fewer dependencies, so effort is sligh
 
 -   [Testing Microservices, the sane way](https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16)
 -   [Uncle Bob's "The Little Mocker"](https://8thlight.com/blog/uncle-bob/2014/05/14/TheLittleMocker.html)
+- [testdouble.js "Purpose"](https://github.com/testdouble/testdouble.js/blob/master/docs/2-howto-purpose.md#purpose)
+
+
+## For discussion
+
+* Main problem to solve: how to test services that use another service?
+* What's covered and what's not?
+* Avoid testing behavior of a unit and integration with other units in a single test
+* Avoid mixing two types of tests when possible
