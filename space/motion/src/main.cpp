@@ -14,19 +14,19 @@ int main() {
     drive.forward(speed);
     wait(1);
     drive.stop();
-    wait(1);
+    wait_ms(100);
     drive.back(speed);
     wait(1);
     drive.stop();
-    wait(1);
+    wait_ms(100);
     drive.left(speed);
     wait(1);
     drive.stop();
-    wait(1);
+    wait_ms(100);
     drive.right(speed);
     wait(1);
     drive.stop();
-    wait(1);
+    wait_ms(100);
   }
 }
 
