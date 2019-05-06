@@ -16,12 +16,16 @@ It's my understanding that these companies use simulations to facilitate testing
 ## Tools
 
 I'll be using:
+
  * NASA's [trick] - awesomesauce
  * NASA's [IDF] – awesomerelish
  * [mbed]
- * ST's STM32 product – great features, software support, and prices
- * WiFi – maybe eventually some SDR stuff
- * Probably some Raspberry Pi's for convenience
+ * ST's STM32 – great features, software support, and prices (Nucleo F401RE)
+ * ESP32 for WiFi – keeping it simple, but maybe some SDR stuff later on (Sparkfun ESP32 Thing)
+ * TB6612FNG for DC motor control (5-5.5V or so)
+ * Some Pololu step-up/down voltage regulators (S7V8A and/or S18V20ALV)
+ * Some generic tank chassis with tracks and two DC gear motors (~$15-20 stuff I had laying around)
+ * Probably a Raspberry Pi for convenience
 
 
 ## Tradeoffs
@@ -37,7 +41,25 @@ I don't have the resources of these larger organizations, so here's how I'm maki
 
 These are the things I'd like to explore:
 
+* Navigation: where am I withing my environment (point A) and where are the things I care about (potential B's)
+* Guidance: planning path for getting from A to B
+* Control: operating motion systems to follow predetermined path
+* Communications: what commands do I accept / issue and how is a message transmitted (physical / digital / application interfaces)
+* Power: do I have enough?
+
+
+## Todo
+
+* ~~Familiarize myself with Trick~~
+* ~~Familiarize myself with mbed~~
+* ~~Figure out how to use ESP32 with toolchain~~
+* ~~Setup STM32, TB6612FNG, and tank chassis for motor control testing~~
+* Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply
+* Figure out how _roughly_ to integrate Trick and the subsystems
+* Figure out how I should use IDF
+
 
 [trick]: https://github.com/nasa/trick
 [idf]: https://github.com/nasa/idf
 [mbed]: http://mbed.org
+[SIM_wheelbot]: https://github.com/nasa/trick/tree/9335b9cff8939b28168f9854720d165d75e65c94/trick_sims/SIM_wheelbot
