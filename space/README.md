@@ -54,7 +54,7 @@ These are the things I'd like to explore:
 * ~~Familiarize myself with mbed~~
 * ~~Figure out how to use ESP32 with toolchain~~
 * ~~Setup STM32, TB6612FNG, and tank chassis for motor control testing~~
-* Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply
+* Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply [info](https://www.analog.com/en/analog-dialogue/articles/dc-to-dc-step-up-step-down-regulators.html)
 * Figure out how _roughly_ to integrate Trick and the subsystems
 * Figure out how I should use IDF
 
