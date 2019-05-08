@@ -43,10 +43,11 @@ These are the things I'd like to explore:
 
 * Navigation: where am I withing my environment (point A) and where are the things I care about (potential B's)
 * Guidance: planning path for getting from A to B
-* Control: operating motion systems to follow predetermined path
-* Communications: what commands do I accept / issue and how is a message transmitted (physical / digital / application interfaces)
-* Power: do I have enough?
+* [Control]: operating motion systems to follow predetermined path
+* [Communications]: what commands do I accept / issue and how is a message transmitted (physical / digital / application interfaces)
+* [Power]: do I have enough?
 
+![Subsystems][subsystem diagram]
 
 ## Todo
 
@@ -63,3 +64,7 @@ These are the things I'd like to explore:
 [idf]: https://github.com/nasa/idf
 [mbed]: http://mbed.org
 [SIM_wheelbot]: https://github.com/nasa/trick/tree/9335b9cff8939b28168f9854720d165d75e65c94/trick_sims/SIM_wheelbot
+[Control]: ./subsystems/control/README.md
+[Communications]: ./subsystems/comms/README.md
+[Power]: ./subsystems/power/README.md
+[subsystem diagram]: ./docs/subsystems.png
