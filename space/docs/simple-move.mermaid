@@ -1,0 +1,14 @@
+# Open this with mermaid live editor https://mermaidjs.github.io/mermaid-live-editor/
+
+sequenceDiagram
+participant guidance
+participant control
+participant navigation
+
+guidance->>guidance: determine goal
+guidance->>control: provide goal
+loop until reaches goal
+control->>navigation: determine heading and direction
+control->>control: move to heading/direction
+end
+control->>guidance: goal reached

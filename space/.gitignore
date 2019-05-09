@@ -2,3 +2,6 @@
 .pio
 .pioenvs
 .piolibdeps
+
+# FreeCAD backups
+*.FCStd1

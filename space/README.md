@@ -47,7 +47,14 @@ These are the things I'd like to explore:
 * [Communications]: what commands do I accept / issue and how is a message transmitted (physical / digital / application interfaces)
 * [Power]: do I have enough?
 
+Note: initially navigation and guidance will be simulation-only and messages from these systems will be sent remotely
+
+
 ![Subsystems][subsystem diagram]
+
+## Motion
+
+![simple move][simple move]
 
 ## Todo
 
@@ -57,6 +64,7 @@ These are the things I'd like to explore:
 * ~~Setup STM32, TB6612FNG, and tank chassis for motor control testing~~
 * ~~Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply~~
 * Mount components on chassis for mobility
+* Add emergency shutoff switch
 * Figure out how _roughly_ to integrate Trick and the subsystems
 * Figure out how I should use IDF – at least use as abstraction layer to enable easy transition from remote guidance / navigation to on-board
 
@@ -69,3 +77,4 @@ These are the things I'd like to explore:
 [Communications]: ./subsystems/comms/README.md
 [Power]: ./subsystems/power/README.md
 [subsystem diagram]: ./docs/subsystems.png
+[simple move]: ./docs/simple-move.png
