@@ -63,7 +63,10 @@ Note: initially navigation and guidance will be simulation-only and messages fro
 * ~~Figure out how to use ESP32 with toolchain~~
 * ~~Setup STM32, TB6612FNG, and tank chassis for motor control testing~~
 * ~~Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply~~
-* Mount components on chassis for mobility
+* ~~Mount components on chassis for mobility~~
+* ~~Connect I2C comms -> control (ESP32 GPIO16 / 17, STM32 pins SDA / SCL)~~
+* Decide on comms -> control protocol
+* Expose HTTP API to send guidance
 * Add emergency shutoff switch
 * Figure out how _roughly_ to integrate Trick and the subsystems
 * Figure out how I should use IDF – at least use as abstraction layer to enable easy transition from remote guidance / navigation to on-board

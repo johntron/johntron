@@ -13,6 +13,7 @@ namespace tb6612 {
 class DifferentialDrive {
  public:
   DifferentialDrive(Motor left, Motor right);
+  void speedAndRotation(float speed, float rotation);
   void forward(float speed);
   void back(float speed);
   void left(float speed);

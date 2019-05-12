@@ -12,27 +12,40 @@ namespace tb6612 {
 DifferentialDrive::DifferentialDrive(Motor leftMotor, Motor rightMotor)
     : leftMotor(leftMotor), rightMotor(rightMotor) {}
 
+void DifferentialDrive::speedAndRotation(float speed, float rotation) {
+  float primarySpeed = speed;
+  float skiddingSpeed = speed - (abs(rotation) * 2);
+
+  if (rotation > 0) {
+    rightMotor.drive(primarySpeed);
+    leftMotor.drive(skiddingSpeed);
+  }
+
+  if (rotation < 0) {
+    rightMotor.drive(skiddingSpeed);
+    leftMotor.drive(primarySpeed);
+  }
+
+  if (rotation == 0) {
+    rightMotor.drive(primarySpeed);
+    leftMotor.drive(primarySpeed);
+  }
+}
+
 void DifferentialDrive::forward(float speed) {
-  leftMotor.drive(speed);
-  rightMotor.drive(speed);
+  speedAndRotation(speed, 0);
 }
 
 void DifferentialDrive::back(float speed) {
-  float temp = abs(speed);
-  leftMotor.drive(-temp);
-  rightMotor.drive(-temp);
+  speedAndRotation(-speed, 0);
 }
 
 void DifferentialDrive::left(float speed) {
-  float temp = abs(speed);
-  leftMotor.drive(-temp);
-  rightMotor.drive(temp);
+  speedAndRotation(speed, -1.0);
 }
 
 void DifferentialDrive::right(float speed) {
-  float temp = abs(speed);
-  leftMotor.drive(temp);
-  rightMotor.drive(-temp);
+  speedAndRotation(speed, 1.0);
 }
 
 void DifferentialDrive::brake() {
