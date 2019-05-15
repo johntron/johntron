@@ -65,8 +65,8 @@ Note: initially navigation and guidance will be simulation-only and messages fro
 * ~~Connect motion (5V, 1A) and comms (3.3V, mA range) subsystems to a common power supply~~
 * ~~Mount components on chassis for mobility~~
 * ~~Connect I2C comms -> control (ESP32 GPIO16 / 17, STM32 pins SDA / SCL)~~
+* ~~Expose HTTP API to send guidance~~
 * Decide on comms -> control protocol
-* Expose HTTP API to send guidance
 * Add emergency shutoff switch
 * Figure out how _roughly_ to integrate Trick and the subsystems
 * Figure out how I should use IDF – at least use as abstraction layer to enable easy transition from remote guidance / navigation to on-board

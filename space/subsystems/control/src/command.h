@@ -1,0 +1,9 @@
+#ifndef SPACE_SUBSYSTEMS_CONTROL_SRC_INSTRUCTION_H_
+#define SPACE_SUBSYSTEMS_CONTROL_SRC_INSTRUCTION_H_
+
+struct set_velocity {
+  float speed;
+  float turn_ratio;
+};
+
+#endif //SPACE_SUBSYSTEMS_CONTROL_SRC_INSTRUCTION_H_
