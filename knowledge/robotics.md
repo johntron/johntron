@@ -13,6 +13,7 @@
 * [Cartographer](https://github.com/googlecartographer), [Octomap](https://octomap.github.io/), [tensorflow_object_detector](https://github.com/osrf/tensorflow_object_detector.git)
 * [gym-gazebo](https://github.com/AcutronicRobotics/gym-gazebo2)
 * NASA's Trick and IDF
+* [Accutronics' MARA simulation](https://github.com/AcutronicRobotics/MARA)
 
 ## Competitions (study material)
 
