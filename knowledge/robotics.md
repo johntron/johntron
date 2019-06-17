@@ -23,6 +23,7 @@
 
 ## Reference and learning
 
+* [Tutorials for DARPA SubT](https://bitbucket.org/osrf/subt/wiki/tutorials)
 * [DPRG clips](https://www.youtube.com/user/DPRGclips)
 * [OSRF videos, including many from ROSCon's](https://vimeo.com/osrfoundation)
 * [awesome-gazebo](https://github.com/fkromer/awesome-gazebo)
