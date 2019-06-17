@@ -17,6 +17,7 @@
 
 * [NASA's Space Robotics Challenge](https://www.nasa.gov/directorates/spacetech/centennial_challenges/space_robotics/)
 * Amazon's Picking Challenge
+* [DARPA Subterranean Challenge (SubT)](https://www.darpa.mil/program/darpa-subterranean-challenge)
 * [DARPA Robitics Challenge](https://www.darpa.mil/program/darpa-robotics-challenge)
 * [FRC](https://www.firstinspires.org/robotics/frc)
 * [NASA's list of competitions](https://robotics.nasa.gov/events/competitions.php)
