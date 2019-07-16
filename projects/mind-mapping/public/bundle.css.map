@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/Output.svelte",
+    "../src/App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  export let graph;\n\n  const prettyPrint = graph => `nodes: ${graph.nodes().map(node => node)}\nedges:\n  ${graph\n    .edges()\n    .map(edge => `${edge.v} -> ${edge.w}`)\n    .join(\"\\n  \")}`;\n\n  let output = \"\";\n  $: output = prettyPrint(graph);\n</script>\n\n<style>\n  pre {\n    margin: 1em;\n  }\n</style>\n\n<pre>{output}</pre>\n",
+    "<script type=\"module\">\n  import Input from \"./Input.svelte\";\n  import Output from \"./Output.svelte\";\n  import { input } from \"./state.js\";\n  import ohm from \"../node_modules/ohm-js/dist/ohm.js\";\n  import dagre from \"../node_modules/dagre\";\n\n  const create_grammar = () =>\n    ohm.grammar(`Taxonomy {\n    taxonomy = relation+\n    relation = topic \"->\" topic eol?\n    topic = \" \"* any \" \"*\n    eol = \"\\\\r\"? \"\\\\n\"\n}`);\n\n  const grammar = create_grammar();\n  const evaluate = input => {\n    const semantics_with_evalute = grammar =>\n      grammar.createSemantics().addOperation(\"evaluate\", {\n        taxonomy: function(relations) {\n          relations.evaluate().forEach(relation => {\n            const [topic_a, topic_b] = relation;\n            graph.setNode(topic_a, { label: topic_a, width: 144, height: 100 });\n            graph.setNode(topic_b, { label: topic_b, width: 144, height: 100 });\n            graph.setEdge(topic_a, topic_b);\n          });\n          return graph;\n        },\n        relation: function(topic_a, _, topic_b, __) {\n          return [topic_a.evaluate(), topic_b.evaluate()];\n        },\n        topic: function(_, __, ___) {\n          return this.sourceString.trim();\n        }\n      });\n    const match = grammar.match(input);\n    console.log(\"succeeded?\", match.succeeded());\n    const semantics = match => semantics_with_evalute(grammar)(match);\n    const graph = new dagre.graphlib.Graph();\n    const results = semantics(match).evaluate();\n    console.log(dagre.graphlib.json.write(results));\n    return results;\n  };\n\n  export const notify = new_value => ($input = new_value);\n  let graph;\n  $: graph = evaluate($input);\n</script>\n\n<style>\n  .container {\n    display: grid;\n    grid-template-columns: auto 1fr 1fr auto;\n  }\n  .input {\n    grid-column: 2;\n  }\n  .output {\n    grid-column: 3;\n  }\n</style>\n\n<span class=\"container\">\n  <span class=\"input\">\n    <Input {notify} />\n  </span>\n  <span class=\"output\">\n    <Output {graph} />\n  </span>\n</span>\n"
+  ],
+  "names": [],
+  "mappings": "AAeE,GAAG,eAAC,CAAC,AACH,MAAM,CAAE,GAAG,AACb,CAAC;ACiCD,UAAU,cAAC,CAAC,AACV,OAAO,CAAE,IAAI,CACb,qBAAqB,CAAE,IAAI,CAAC,GAAG,CAAC,GAAG,CAAC,IAAI,AAC1C,CAAC,AACD,MAAM,cAAC,CAAC,AACN,WAAW,CAAE,CAAC,AAChB,CAAC,AACD,OAAO,cAAC,CAAC,AACP,WAAW,CAAE,CAAC,AAChB,CAAC"
+}
