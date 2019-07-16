@@ -1,0 +1,28 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.0.0",
+    "prettier-plugin-svelte": "^0.6.0",
+    "prettier-std-cli": "^1.0.0",
+    "rollup": "^1.12.0",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^4.0.4",
+    "svelte": "^3.0.0"
+  },
+  "dependencies": {
+    "sirv-cli": "^0.4.4"
+  },
+  "scripts": {
+    "build": "rollup -c -w",
+    "autolint": "onchange --initial --await-write-finish 500 'static/src/**/*' -- prettier-std --write {{changed}}",
+    "dev": "run-p start:dev autolint build",
+    "start": "sirv static/public --single",
+    "start:dev": "sirv static/public --single --dev"
+  }
+}
