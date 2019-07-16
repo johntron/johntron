@@ -66,6 +66,8 @@ Note: initially navigation and guidance will be simulation-only and messages fro
 * ~~Mount components on chassis for mobility~~
 * ~~Connect I2C comms -> control (ESP32 GPIO16 / 17, STM32 pins SDA / SCL)~~
 * ~~Expose HTTP API to send guidance~~
+* What exactly does "extern" do?
+* Figure out testing
 * Decide on comms -> control protocol
 * Add emergency shutoff switch
 * Figure out how _roughly_ to integrate Trick and the subsystems

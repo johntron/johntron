@@ -5,8 +5,8 @@
 #include "esp_wifi.h"
 #include "nvs_flash.h"
 
-#include "mongoose.h"
 #include "../../control/src/command.h"
+#include "mongoose.h"
 
 #define WIFI_SSID "Johntron"
 #define WIFI_PASS "/pAV5&UP"
@@ -20,8 +20,7 @@
 #define FRAME_SIZE_BYTES 512
 #define ACK false
 
-void i2c_master_init()
-{
+void i2c_master_init() {
   i2c_port_t i2c_master_port = MASTER_PORT;
   i2c_config_t conf;
   conf.mode = I2C_MODE_MASTER;
@@ -31,12 +30,10 @@ void i2c_master_init()
   conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
   conf.master.clk_speed = I2C_FREQUENCY;
   ESP_ERROR_CHECK(i2c_param_config(i2c_master_port, &conf));
-  ESP_ERROR_CHECK(i2c_driver_install(i2c_master_port, conf.mode,
-                                     (i2c_port_t) NO_BUFFER_NEEDED_FOR_MASTER,
-                                     (i2c_port_t) NO_BUFFER_NEEDED_FOR_MASTER, 0));
+  ESP_ERROR_CHECK(i2c_driver_install(i2c_master_port, conf.mode, (i2c_port_t)NO_BUFFER_NEEDED_FOR_MASTER, (i2c_port_t)NO_BUFFER_NEEDED_FOR_MASTER, 0));
 }
 
-void send_to_slave(uint8_t* data, size_t size) {
+void send_to_slave(uint8_t *data, size_t size) {
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
   ESP_ERROR_CHECK(i2c_master_start(cmd));
   ESP_ERROR_CHECK(i2c_master_write_byte(cmd, SLAVE_ADDRESS, ACK));
@@ -48,8 +45,8 @@ void send_to_slave(uint8_t* data, size_t size) {
 }
 
 static esp_err_t event_handler(void *ctx, system_event_t *event) {
-  (void) ctx;
-  (void) event;
+  (void)ctx;
+  (void)event;
   return ESP_OK;
 }
 
@@ -71,11 +68,9 @@ static void mg_ev_handler(struct mg_connection *nc, int ev, void *p) {
     }
     case MG_EV_HTTP_REQUEST: {
       char addr[32];
-      struct http_message *hm = (struct http_message *) p;
-      mg_sock_addr_to_str(&nc->sa, addr, sizeof(addr),
-                          MG_SOCK_STRINGIFY_IP | MG_SOCK_STRINGIFY_PORT);
-      printf("HTTP request from %s: %.*s %.*s\n", addr, (int) hm->method.len,
-             hm->method.p, (int) hm->uri.len, hm->uri.p);
+      struct http_message *hm = (struct http_message *)p;
+      mg_sock_addr_to_str(&nc->sa, addr, sizeof(addr), MG_SOCK_STRINGIFY_IP | MG_SOCK_STRINGIFY_PORT);
+      printf("HTTP request from %s: %.*s %.*s\n", addr, (int)hm->method.len, hm->method.p, (int)hm->uri.len, hm->uri.p);
       struct set_velocity command;
       command.speed = 0.0;
       command.turn_ratio = 0.0;
@@ -88,12 +83,12 @@ static void mg_ev_handler(struct mg_connection *nc, int ev, void *p) {
       mg_printf(nc, reply_fmt, command.speed, command.turn_ratio);
       nc->flags |= MG_F_SEND_AND_CLOSE;
 
-      char* frame = (char*) malloc(FRAME_SIZE_BYTES);
-      for(int i = 0; i < FRAME_SIZE_BYTES; i += 1) {
+      char *frame = (char *)malloc(FRAME_SIZE_BYTES);
+      for (int i = 0; i < FRAME_SIZE_BYTES; i += 1) {
         *(frame + i) = 0;
       }
       snprintf(frame, FRAME_SIZE_BYTES, "%f,%f", command.speed, command.turn_ratio);
-      send_to_slave((uint8_t*) frame, FRAME_SIZE_BYTES);
+      send_to_slave((uint8_t *)frame, FRAME_SIZE_BYTES);
       break;
     }
     case MG_EV_CLOSE: {
@@ -113,9 +108,7 @@ void init_wifi() {
   ESP_ERROR_CHECK(esp_wifi_init(&cfg));
   ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
   ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-  wifi_config_t sta_config = {
-      {WIFI_SSID, WIFI_PASS, false}
-  };
+  wifi_config_t sta_config = {{WIFI_SSID, WIFI_PASS, false}};
   ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &sta_config));
   ESP_ERROR_CHECK(esp_wifi_start());
   ESP_ERROR_CHECK(esp_wifi_connect());
@@ -138,7 +131,9 @@ struct mg_mgr init_webserver() {
   return mgr;
 }
 
-extern "C" { void app_main(); }
+extern "C" {
+void app_main();
+}
 void app_main() {
   printf("Booted comms\n");
   i2c_master_init();

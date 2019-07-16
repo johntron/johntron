@@ -8,6 +8,7 @@ https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
 #ifndef tb6612fng_mbed_motor
 #define tb6612fng_mbed_motor
 
+// How to ensure mbed has been loaded?
 #include "mbed.h"
 
 namespace tb6612 {
@@ -35,7 +36,9 @@ class Motor {
   //(forward, back, left, and right all call drive)
   void standby();
 
- private:
+  float speed();
+
+ protected:
   //variables for the 2 inputs, PWM input, Offset value, and the Standby pin
   DigitalOut In1, In2;
   PwmOut PWM;

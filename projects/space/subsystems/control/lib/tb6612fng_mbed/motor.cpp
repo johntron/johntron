@@ -6,7 +6,8 @@ https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
 ******************************************************************************/
 
 #include "motor.h"
-#include "mbed.h"
+// TODO how to ensure mbed is loaded?
+//#include "mbed.h"
 
 namespace tb6612 {
 
@@ -15,8 +16,10 @@ Motor::Motor(PinName In1pin, PinName In2pin, PinName PWMpin, PinName STBYpin)
 
 void Motor::drive(float speed) {
   Standby = 1;
-  if (speed >= 0) fwd(speed);
-  else rev(-speed);
+  if (speed >= 0)
+    fwd(speed);
+  else
+    rev(-speed);
 }
 
 void Motor::drive(float speed, int duration_ms) {
@@ -54,4 +57,8 @@ void Motor::standby() {
   Standby = 0;
 }
 
+float Motor::speed() {
+  return PWM;
 }
+
+}  // namespace tb6612
