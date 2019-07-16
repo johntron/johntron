@@ -1,0 +1,12 @@
+{
+  "mods": [
+    {
+      "name": "base",
+      "enabled": true
+    },
+    {
+      "name": "Johntrons_API",
+      "enabled": true
+    }
+  ]
+}
