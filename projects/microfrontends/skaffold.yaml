@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: gcr.io/johntron/composer
+    workspace: services/composer
+#  - imageName: home
+#    workspace: services/home
+deploy:
+  kubectl:
+    manifests:
+    - ./deployment-with-sidecar.yml
