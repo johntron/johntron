@@ -1,0 +1,6 @@
+#!/bin/sh
+
+bfg \
+   --delete-folders "{node_modules,.pioenvs}" \
+   --replace-text audit/passwords.txt \
+   .

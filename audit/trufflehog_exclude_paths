@@ -1,0 +1,12 @@
+(.*/)?package-lock.json
+(.*/)?.travis.yml
+(.*/)?README.md
+space/comms/lib/mongoose/mongoose.c
+(.*/)?.+\.REMOVED\.git\-id
+projects/orbital-mechanics/index.html
+projects/orbital-mechanics/index.js
+projects/microfrontends/istio-minimal.yaml
+projects/microfrontends/deployment-with-sidecar.yml
+(.*/)?.+\.js\.map
+projects/mind-mapping/public/bundle.js
+ddns/ddns.sh

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+truffleHog --regex --entropy true --exclude_paths audit/trufflehog_exclude_paths .
+
