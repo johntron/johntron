@@ -1,5 +1,9 @@
 # Monitoring
 
+## New approaches / ideas
+
+* [Gray failure: the Achilles’ heel of cloud-scale systems]*(https://blog.acolyer.org/2017/06/15/gray-failure-the-achilles-heel-of-cloud-scale-systems/)
+
 ## New Relic
 
 * Insert API - send custom events
@@ -26,7 +30,7 @@ What to use when:
 * Histogram
 * Heatmap - Histogram in multiple dimensions (use histogram() w/ facet); good for getting feel for response times across services
 * Funnel - How objects distribute toward specific goal (e.g. purchase funnel); good to view multiple funnels side-by-side
-* 
+*
 
 Tips:
 
