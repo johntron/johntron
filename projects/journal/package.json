@@ -1,5 +1,6 @@
 {
   "name": "journal",
+  "type": "module",
   "version": "1.0.0",
   "devDependencies": {
     "cross-env": "^5.2.0",
