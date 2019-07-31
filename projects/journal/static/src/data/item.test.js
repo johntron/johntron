@@ -1,23 +1,15 @@
-import { item, transitions, undo_transitions } from './item.js'
-import * as assert from 'assert'
+import { item, transitions } from './item.js'
 
-const tests = []
-const end = () => tests.length
-
-tests[end()] = () => console.log('> item.js')
-tests[end()] = () => {
-    console.log('can be dead')
-    let i = item()
-    i = transitions.dead(i)
-    assert.ok(i.dead)
-}
-tests[end()] = () => {
-    console.log('dead can be undone')
-    let i = item()
-    i = transitions.dead(i)
-    i = undo_transitions.dead(i)
-    assert.ok(!i.dead)
-}
-
-tests.forEach(t => t())
+describe('data: item', () => {
+  test('can be dead', () => {
+      let i = item()
+      i = transitions.dead(i)
+      expect(i.dead).toBeTruthy()
+  })
+  test('dead can be undone', () => {
+      let i = item()
+      i = transitions.revive(i)
+      expect(i.dead).toBeFalsy()
+  })
+})
 

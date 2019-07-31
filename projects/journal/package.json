@@ -3,7 +3,11 @@
   "type": "module",
   "version": "1.0.0",
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
     "cross-env": "^5.2.0",
+    "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.0.0",
     "prettier-plugin-svelte": "^0.6.0",
@@ -24,6 +28,7 @@
     "autolint": "onchange --initial --await-write-finish 500 'static/src/**/*' -- prettier-std --write {{changed}}",
     "dev": "run-p start:dev autolint build",
     "start": "sirv static/public --single",
-    "start:dev": "sirv static/public --single --dev"
+    "start:dev": "sirv static/public --single --dev",
+    "test": "jest"
   }
 }
