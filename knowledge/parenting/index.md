@@ -56,6 +56,7 @@ Format:
 ## The list
 
 * Foundation: [Self](./lessons/self.md)
+* Foundation: [Personal development](./lessons/personal-development.md)
 * Foundation: [Purpose](./lessons/purpose.md)
 * Foundation: [Health](./lessons/health.md)
 * Foundation: [Planning](./lessons/planning.md)
