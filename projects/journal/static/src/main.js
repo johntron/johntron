@@ -1,4 +1,4 @@
-import Index from './Index.svelte'
+import Index from './ui/Index.svelte'
 import { journal } from './data/journal.js'
 
 const index = new Index({

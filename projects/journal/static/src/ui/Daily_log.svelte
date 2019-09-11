@@ -1,5 +1,5 @@
 <script>
-  import { day as create_day } from "./data/day.js";
+  import { day as create_day } from "../data/day.js";
   import Item_list from "./Item_list.svelte";
 
   export let day;
