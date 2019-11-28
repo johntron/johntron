@@ -72,3 +72,13 @@ Format:
 * [Love](./lessons/love.md)
 * Finances
 * Others: Study, Culture, Technology, STEM
+
+## Todo
+
+* Find studies on most important skills to develop
+* Find games to make learning these fun, including winners of these awards:
+** MENSA SELECT
+** Oppenheim Toy Portfolio Gold Seal Award
+** Academics' Choice Awards
+** PAL Award
+** Create Child Preferred Choice Award
