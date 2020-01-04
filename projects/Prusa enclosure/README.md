@@ -1,5 +1,7 @@
 # Prusa i3 Enclosure
 
+![render](./Enclosure.png)
+
 ## Goals
 
 * A fully-contained enclosure to contain dangerous fumes

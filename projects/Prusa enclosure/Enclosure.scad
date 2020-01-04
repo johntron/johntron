@@ -59,8 +59,8 @@ module printer() {
         cube(power_supply_dimensions);
     }
     
-  //  #cube(printer_extents());    
-//    right(clearance_for_y_axis + printer_width() / 2) xrot(90) frame_components();
+    #cube(printer_extents());    
+    right(clearance_for_y_axis + printer_width() / 2) xrot(90) frame_components();
     power_supply();
 }
 
@@ -129,5 +129,5 @@ function origin_to_enclosure_bottom() = leg_height - bottom_lip_depth;
 function origin_to_printer_bottom() = leg_height + bottom_thickness;
 
 up(origin_to_printer_bottom()) color("cyan") translate(enclosure_printer_offset / 2) printer();
-//up(origin_to_enclosure_bottom()) enclosure();
-//legs();
+up(origin_to_enclosure_bottom()) enclosure();
+legs();
