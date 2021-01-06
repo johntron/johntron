@@ -1,0 +1,28 @@
+{
+  "name": "physics",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "snowpack dev",
+    "lint": "eslint src/3d --fix"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^5.0.0-alpha.5",
+    "matter-js": "^0.14.2"
+  },
+  "devDependencies": {
+    "@babylonjs/inspector": "^5.0.0-alpha.5",
+    "@types/matter-js": "^0.14.8",
+    "@types/react": "^16.7.3",
+    "@types/react-dom": "^16.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.17.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "snowpack": "^2.18.5",
+    "typescript": "^4.1.3"
+  }
+}
