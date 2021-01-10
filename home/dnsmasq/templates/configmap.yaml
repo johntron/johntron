@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cm
+data:
+  dnsmasq.conf: |
+    log-queries
+    log-dhcp
+    log-facility=-
+    no-resolv
+    no-hosts
+    address=/kube.johntron.com/192.168.1.182
+    address=/dns.johntron.com/192.168.1.64
+    address=/ha.johntron.com/192.168.1.213
+    dhcp-range=192.168.1.32,192.168.1.63,0.0.0.0,192.168.1.255,12h
+    server=8.8.8.8
+{{- range $domain, $ip := .Values.config }}
+{{- if not (empty $ip) }}
+{{ printf "address=/%v/%v" $domain $ip | indent 4}}
+{{- end }}
+{{- end }}
