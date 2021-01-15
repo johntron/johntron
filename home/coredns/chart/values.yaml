@@ -94,7 +94,7 @@ priorityClassName: ""
 servers:
 - zones:
   - zone: .
-    use_tcp: false        # set this parameter to optionally expose the port on tcp as well as udp for the DNS protocol
+    scheme: dns://
   port: 53
   plugins:
   # Required to query kubernetes API for data
