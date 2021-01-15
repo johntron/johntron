@@ -1,0 +1,29 @@
+@startuml Components
+
+!include https://raw.githubusercontent.com/bschwarz/puml-themes/master/themes/superhero/puml-theme-superhero.puml
+
+component Corpus
+component Scheduler
+component Frontier
+component Archive
+component Index
+component UI
+
+component Workers {
+    component Downloader
+    component Extractor
+}
+
+Scheduler --> Downloader: dispatch
+Scheduler --> Extractor: dispatch
+Scheduler --> Frontier
+Downloader --> Corpus: retrieval
+Downloader --> Archive: storage
+Extractor --> Frontier: discovery
+Extractor --> Archive
+Extractor --> Index: indexing
+UI --> Archive
+UI --> Index
+UI --> Scheduler: invocation
+
+@enduml
