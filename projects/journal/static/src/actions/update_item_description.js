@@ -1,4 +1,3 @@
-import debounce from 'debounce'
-export default debounce(item => {
+export default item => {
   console.log('updated', item.description)
-}, 500)
+}

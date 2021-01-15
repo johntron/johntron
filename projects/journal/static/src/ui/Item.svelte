@@ -1,12 +1,14 @@
 <script>
   import { afterUpdate } from "svelte";
+  import debounce from "debounce";
   import updateItemDescription from "../actions/update_item_description.js";
   export let item;
-  let editing = false;
+  export let day;
+  export let editing = false;
   let input;
 
   const toggle = () => (editing = !editing);
-  $: updateItemDescription(item);
+  $: debounce(updateItemDescription(item), 500);
 
   afterUpdate(() => {
     if (editing) {

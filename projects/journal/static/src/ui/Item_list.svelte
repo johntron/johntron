@@ -1,11 +1,17 @@
 <script>
-  import { item } from "../data/item.js";
   import Item from "./Item.svelte";
-  export let items;
+  import New_item from "./New_item.svelte";
+  import item from "../data/item.js";
+  export let day;
 
-  if (!items.length) {
-    items[items.length] = item("Do something");
-  }
+  let editing_index;
+
+  const newItem = () => {
+    const i = item(day);
+    editing_index = day.items.length;
+    day.items[editing_index] = i;
+    console.log(editing_index, i, day);
+  };
 </script>
 
 <style>
@@ -15,7 +21,11 @@
 </style>
 
 <ul>
-  {#each items as item}
-    <Item {item} />
+  {#each day.items.map((item, i) => [i, item]) as [i, item]}
+    <Item {day} {item} editing={i === editing_index} />
   {/each}
+  <li on:click={newItem}>
+    <i>new item</i>
+    <i class="material-icons">add</i>
+  </li>
 </ul>

@@ -26,9 +26,13 @@ Services:
 
 * Serialization - converts data in memory to a serial format
 * Persistence - enables offline
-* Synchronization - enables sharing between devices
+* Synchronization - enables sharing between devicefulness
 
 
 ## Reference
 
 * [Svelte 3 example](https://svelte.dev/examples#hacker-news)
+
+## Todo
+
+* Build change log to support undos, activity feed, and synchronization
