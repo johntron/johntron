@@ -1,0 +1,22 @@
+{
+  "name": "github-browser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "config": "PROJECT_ID=johntron BUCKET_ID=johntron-secrets",
+    "build": "npm run config && gcloud builds submit --project ${PROJECT_ID} --tag gcr.io/${PROJECT_ID}/github-browser:0.0.1 .",
+    "deploy": "npm run config && gcloud beta run deploy github-browser --project ${PROJECT_ID} --platform managed --region us-central1 --image gcr.io/${PROJECT_ID}/github-browser:0.0.1 --set-env-vars \"GITHUB_CLIENT=berglas://${BUCKET_ID}/gh-browser-client\" --allow-unauthenticated"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-partials": "^0.3.0",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11"
+  }
+}
