@@ -176,6 +176,6 @@ origin_to_enclosure_underside_ceiling = [0, 0, leg_height - enclosure_underside_
 origin_to_printer = [window_material_thickness, window_material_thickness, leg_height + enclosure_floor_thickness];
 
 //translate(origin_to_printer) printer();
-//translate(origin_to_enclosure_underside_ceiling) enclosure();
+translate(origin_to_enclosure_underside_ceiling) enclosure();
 filtration();
-//base();
+base();
