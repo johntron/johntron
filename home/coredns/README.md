@@ -9,5 +9,5 @@ docker run --rm -v $PWD:/v -w /v golang:1.14 ./coredns -plugins
 Deploy:
 
 ```
-helm upgrade --install coredns .
+helm upgrade --install coredns coredns/coredns -f chart/values.yaml
 ```
