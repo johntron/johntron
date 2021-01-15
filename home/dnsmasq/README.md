@@ -1,1 +1,0 @@
-helm upgrade --install dnsmasq .
