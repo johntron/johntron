@@ -1,0 +1,17 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "docker container run --rm --security-opt seccomp=$(pwd)/seccomp.json --cap-add=SYS_ADMIN -v $(pwd)/src:/app/src -v $(pwd)/screenshots:/app/screenshots crawler",
+    "build": "docker build -t crawler .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^5.2.1"
+  }
+}

@@ -1,0 +1,23 @@
+@startuml States
+
+!include https://raw.githubusercontent.com/bschwarz/puml-themes/master/themes/superhero/puml-theme-superhero.puml
+
+hide empty description
+
+[*] --> schedule: seeded frontier
+schedule --> download
+download --> schedule
+schedule --> extract
+state extract {
+    [*] --> archive
+    [*] --> discover
+    [*] --> index
+    archive --> [*]
+    discover --> [*]
+    index --> [*]
+}
+
+extract --> schedule
+schedule -> [*]: no frontier
+
+@enduml
