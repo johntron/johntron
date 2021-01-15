@@ -2,11 +2,11 @@ import { Engine, EngineStore, FreeCameraInputsManager, FreeCameraKeyboardMoveInp
 import canvas from './canvas'
 
 export default (inputs: FreeCameraInputsManager): void => {
-    const { keyboard } = <{ keyboard: FreeCameraKeyboardMoveInput }>inputs.attached;
-    keyboard.keysUp.push(87)
-    keyboard.keysDown.push(83)
-    keyboard.keysLeft.push(65)
-    keyboard.keysRight.push(68)
+    // const { keyboard } = <{ keyboard: FreeCameraKeyboardMoveInput }>inputs.attached;
+    // keyboard.keysUp.push(87)
+    // keyboard.keysDown.push(83)
+    // keyboard.keysLeft.push(65)
+    // keyboard.keysRight.push(68)
     enterPointerLock()
     allowReenterLock()
     recoverFromLockError()
