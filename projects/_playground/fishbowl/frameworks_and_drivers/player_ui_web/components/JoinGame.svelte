@@ -1,0 +1,1 @@
+<button>Join existing game</button>
