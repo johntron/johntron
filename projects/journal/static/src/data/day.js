@@ -1,8 +1,9 @@
-export const day = date => ({
-    date,
-    items: [],
+const toDayString = d =>
+  `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+export default date => ({
+  id () {
+    return toDayString(this.date)
+  },
+  date,
+  items: []
 })
-
-export const add_item = day => item => day.items.push(item)
-export const remove_item = day => item => (day.items = day.items.filter(i => i !== item))
-
