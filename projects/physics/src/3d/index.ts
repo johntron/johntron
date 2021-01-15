@@ -1,6 +1,6 @@
 import createScene from './scene'
 import run from './runner'
-import { AssetsManager, Color3, Color4, CubeTexture, CubeTextureAssetTask, HDRCubeTexture, HemisphericLight, MeshBuilder, PhotoDome, Scene, SceneLoader, StandardMaterial, Texture, Vector3 } from '@babylonjs/core'
+import { AssetsManager, Scene, Vector3 } from '@babylonjs/core'
 import "@babylonjs/core/Debug/debugLayer";
 import "@babylonjs/inspector";
 import canvas from './canvas';
@@ -9,10 +9,11 @@ import setupCamera from './camera'
 import setupInputs from './inputs'
 import setupGround from './ground'
 import setupLights from './lights'
+import setupController from './controller'
 
 const load = async (scene: Scene) => {
     const manager = new AssetsManager(scene);
-    manager.addMeshTask('seagull', 'seagull', '/3d/', 'seagull.glb');
+    // manager.addMeshTask('seagull', 'seagull', '/3d/', 'seagull.glb');
     manager.load()
 }
 
@@ -24,6 +25,7 @@ const setup = (scene: Scene) => {
     setupLights(scene);
     const { inputs } = setupCamera(scene);
     setupInputs(inputs)
+    setupController(scene)
 }
 
 const loadInspector = scene => {

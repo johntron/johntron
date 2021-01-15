@@ -1,6 +1,6 @@
 import { Scene, CubeTexture, HDRCubeTexture } from "@babylonjs/core";
 
-export default (scene: Scene) => {
+export default (scene: Scene): void => {
     const texture = CubeTexture.CreateFromPrefilteredData("https://raw.githubusercontent.com/PatrickRyanMS/BabylonJStextures/master/ENV/flowerRoad_clamped.env", scene);
     texture.name = "environment";
     texture.gammaSpace = false;
