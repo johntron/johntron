@@ -15,7 +15,7 @@
     "download": "^8.0.0",
     "download-status": "^2.2.1",
     "fetch-progress": "^1.2.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
   }
