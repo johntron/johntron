@@ -1,0 +1,6 @@
+configVersion: 1
+project: coredns-mdns
+---
+image: johntron/coredns-mdns
+dockerfile: Dockerfile
+context: .
