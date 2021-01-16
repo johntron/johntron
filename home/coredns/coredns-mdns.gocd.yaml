@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
   build_and_publish_image:
-    # group: coredns-mdns
+    group: coredns-mdns
     # label_template: ${COUNT}
     # lock_behavior: unlockWhenFinished
     # display_order: 1
@@ -14,7 +14,7 @@ pipelines:
         branch: master
     stages:
     - build_and_publish_image:
-        # fetch_materials: true
+        fetch_materials: true
         # keep_artifacts: false
         # clean_workspace: false
         # approval:
@@ -26,7 +26,7 @@ pipelines:
             artifacts:
             - external:
                 id: coredns-mdns
-                # store_id: dockerhub
+                store_id: dockerhub
                 configuration:
                   options:
                     Image: ${DOCKERHUB_USERNAME}/coredns-mdns
