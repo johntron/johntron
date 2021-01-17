@@ -1,0 +1,37 @@
+{
+	"settings": {
+		"files.exclude": {
+			"projects/automation-game": true,
+			"projects/coffee-explorer": true,
+			"projects/cricketbot": true,
+			"projects/factorio": true,
+			"projects/fishbowl": true,
+			"projects/fitness": true,
+			"projects/game-for-eric": true,
+			"projects/github-browser": true,
+			"projects/gnuradio-companion-web": true,
+			"projects/history": true,
+			"projects/home": true,
+			"projects/housing-market-analysis": true,
+			"projects/journal": true,
+			"projects/microfrontends": true,
+			"projects/mind-mapping": true,
+			"projects/musical-keyboard": true,
+			"projects/oauth-token-provider": true,
+			"projects/orbital-mechanics": true,
+			"projects/prusa-enclosure": true,
+			"projects/radio": true,
+			"projects/simulation": true,
+			"projects/space": true,
+			"projects/subaru-crawler": true,
+			"projects/topic-suggestions": true,
+			"projects/cloud-app-reference.md": true,
+			"projects/gnu-radio-for-chrome.md": true,
+		}
+	},
+	"folders": [
+		{
+			"path": "."
+		}
+	]
+}

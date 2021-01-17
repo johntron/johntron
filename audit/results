@@ -1,0 +1,145 @@
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2021-01-15 07:34:41[0m
+[92mHash: babee3d091188ec4f3dbe4bec753daaabb4aa235[0m
+[92mFilepath: projects/subaru-crawler/fetch.ts[0m
+[92mBranch: origin/master[0m
+[92mCommit: Subaru PDF crawler/downloader (stale)
+[0m
+@@ -1,34 +0,0 @@
+-const nodeFetch = require('node-fetch')
+-export { fetch, fetchAsJson }
+-
+-const cookie = `
+-JSESSIONID=[93mD1562A6BF6E1760E433F94F4DB09CD3A[0m; BIGipServerSTIS=729288876.29737.0000; _ga=GA1.2.1844694991.1587906817; check=true; _gcl_au=1.1.11103778.1588047778; [93mrxVisitor=15880477775488N68U8AHBTLS33ARARG51DA4HMV10KUI[0m; AMCVS_[93m[93m94001C8B532957140A490D4D[0m[0m%40AdobeOrg=1; AMCV_[93m[93m94001C8B532957140A490D4D[0m[0m%40AdobeOrg=-1712354808%7CMCIDTS%7C18381%7CMCMID%[93m7C19502058093632177531815867721605862245[0m%7CMCAAMLH-1588652578%7C9%7CMCAAMB-1588652578%[93m7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y[0m%7CMCOPTOUT-1588054978s%7CNONE%7CMCAID%7C2F3553370515D790-4000062524B57759%7CvVersion%7C4.3.0; soa-[93mvisitor=04272020BdaORM5e00fgUaMhuWzV1Orj[0m; s_[93mgetval=04272020BdaORM5e00fgUaMhuWzV1Orj[0m; s_cc=true; _fbp=fb.1.1588047778580.730178154; LPVID=EyNTgyODYwNzA0YjBkNWNh; LPSID-22435102=RwROXcSMSLil0IGIS1MOuA; s_sq=%5B%5BB%5D%5D; s_ppvl=https%253A%2F%2Fwww.subaru.com%2Fowners%2Fvehicle-resources%2Fmanuals.html%253FmodelCode%253D2017-FOR-HFA%2C35%2C35%2C986%2C1792%2C986%2C1792%2C1120%2C2%2CP; s_ppv=https%253A%2F%2Fwww.subaru.com%2Fowners%2Fvehicle-resources%2Fmanuals.html%253FmodelCode%253D2017-FOR-HFA%2C68%2C29%2C2269%2C1792%2C986%2C1792%2C1120%2C2%2CP; dtLatC=2; mbox=session#[93m[93m4dc6de508721448f816601954480049a[0m[0m#1588049638|PC#[93m[93m4dc6de508721448f816601954480049a[0m[0m.17_0#1651292625; dtPC=8$447824586_2h-vPJRROKMDUWWJRFFHDOMVAHEGEIAUTLHJ-0; dtSa=true%7CKD%7C-1%7CPage%3A%20vehicle-resources.html%7C-%7C1588047835027%7C447824586_2%7Chttps%3A%2F%2Fwww.subaru.com%2Fowners%2Fvehicle-resources.html%7CVehicle%20Resources%20%5Ep%20Subaru%7C1588047829784%7C%7C; dtCookie=8$VIRUGK9PV1M107K69VBN1H4KJ21MAI8R|03b0f856cc7e7c0c|1; _4c_=jVJNT9tAFPwraA%2BcYnu%2FPyKhKgFaUQkQpT30FDm7a2zhxO7aiQuI%[93m2F963iRNQkarmYO3Ozpu8Gc0LGkq[0m%[93m2FRlMitMZcaSYwkxP06J86NH1Bto3fbfxsQo2mqOz7tptm2TAMabdZ5mGT2maVNcPahy7b[0m%2BrKytU%[93m2BC75pNsL5Ly35VowmyjfMwTUxKSEoA6J[0m%2FhmjCM4dyGxm1sv%2Bif2kga%2FPKkc4%[93m2Fw4Py2sn4xVK4v47Qy9A0tffVQ9hEmNKq4NsAlEoZq7Zrh77ERPY4ZLQG933lY[0m%2FLi6AAju85%[93m2B3i6t11Vd5H3e5AWgZmqHzUfy8DM3Kn[0m%[93m2BhooIF80HVu4Rh84UPYMd7H89A0D7XfxQOkrtoJvmU2YpD0EQbo9vr7t8X8cnZ[0m%2Be%2FNObv%[93m2FcFPnKh8rmaWfTZtUHZ9O177Nl1nUjJf4ZwdnX[0m%2B4SmhKc4uVB3N1lHmKJUc2qIwFp%[93m2Fmt3Nz8jpqnJnxAhMsdDYMMkoUUowoqELUilKJDxISrk4zYFKPzMhGFNYEHGhDE44hp[0m%[93m2BkgvK5gEFzOru7PIvRtNAXxOBQNzavo2to2AR9mY0xE825NNwYqILQICU1UQfv1[0m%2Bd7zn8thl4n6Pe%2BvIRxSoXEUN6%[93m2Bh6ZqudsPAyNUbmwxEtRrwXOecEpYwhXFiTbCJUzqojCK65waNGoaoSlTSktCQWRbHTSoc57ZZZFYvHQJd4VPcqZAw7KCecyp1QU67oW5kXEvPO5F9GGtth4VyRtZglWwxg9kfjTRbkc2[0m%2B2BZfLT8a5PXyb64iV%2F%2FY%2FZDXK%2BvfwA%3D; rxvt=1588049635058|1588047777550; _gid=GA1.2.57515121.1588210783
+-`.trim()
+-const fetch = async (url, opts) => {
+-  const finalOpts = {
+-    "method": "GET",
+-    "referrer": "https://techinfo.subaru.com/stis/",
+-    "referrerPolicy": "no-referrer-when-downgrade",
+-    "mode": "cors",
+-    ...opts,
+-    headers: {
+-      "accept": "application/json, text/plain, */*",
+-      "accept-language": "en-US,en;q=0.9,vi-VN;q=0.8,vi;q=0.7",
+-      "cache-control": "no-cache",
+-      "content-type": "application/json;charset=UTF-8",
+-      "pragma": "no-cache",
+-      "sec-fetch-dest": "empty",
+-      "sec-fetch-mode": "cors",
+-      "sec-fetch-site": "same-origin",
+-      "cookie": cookie,
+-      ...opts.headers,
+-    }
+-  }
+-  return nodeFetch(url, finalOpts)
+-}
+-
+-const responseText = async response => response.text()
+-const responseJson = async response => response.json()
+-const fetchAs = converter => async (url, opts) => converter(await fetch(url, opts))
+-const fetchAsText = fetchAs(responseText)
+-const fetchAsJson = fetchAs(responseJson)
+\ No newline at end of file
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2021-01-13 07:18:52[0m
+[92mHash: 90025ed4bc78f53fce4803ca9650fc9933406be3[0m
+[92mFilepath: home/gocd/config/cipher.aes[0m
+[92mBranch: origin/master[0m
+[92mCommit: GoCD server config
+[0m
+@@ -1 +0,0 @@
+-[93m851d7b181ff100f50ca174f2edb61950[0m
+\ No newline at end of file
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2021-01-13 07:18:52[0m
+[92mHash: 90025ed4bc78f53fce4803ca9650fc9933406be3[0m
+[92mFilepath: home/gocd/config/go_update_server.pub[0m
+[92mBranch: origin/master[0m
+[92mCommit: GoCD server config
+[0m
+@@ -1,14 +0,0 @@
+------BEGIN PUBLIC KEY-----
+-[93mMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA2nWsuVm9weIA+7J/etYc[0m
+-[93mnR8tlV7mdqBKjBEmLOYum3IAPHQFcCBgJ2MoVTUi4w6FdPokBIrrx5NXFi7+PmLl[0m
+-[93mO0C+aN8BOZmh4vYLsg+lTMupdKL+7d6YCr6dWNF6VcCvvGtm6NGmucSew+9vLGqh[0m
+-[93mJ/dehNG5oBBJGvELf1kzBLCIjVqy9AbqqgB12Nwlnt8xzARRasWSzC73fkZGbBdT[0m
+-[93mCFS4XbcZO/9iOkbDNv8Lin/GNqhv2WfZFr4jXNcyMhJROJ21Z8IKfByBXjKgBrhQ[0m
+-[93mSQTnJppzXacNjkUZamGTFKU2M1YnH/Nz64ErdZJllMfnyQqSyyJVodsySuIgUFtp[0m
+-[93m9Ewsumos23ENlefsGIhw3wE8KDRu9+XNmIV7Lje6LsIMxAsPLl23hGIDXuIPonHZ[0m
+-[93m0I4d8pPWEKi2CFKrfpYkewkJKRgM2P+cTTsqlOKvQUdyrBOiblHg4qfuZ/DSmGnE[0m
+-[93mGwYOqn47F5FazALycsPwofBbKrSIQB5aqSnwiLlPl6Kcuv93urYfC5zeMDXuqQV2[0m
+-[93mdmQXfg10Eqs5fjKXrpGY3Bt4FK2YMmA8+giha4g3+ykG4LzKeb5rwayipufVE2PM[0m
+-[93majXEktCTc5Xcejmj4gx14Z+uFyhEhG6ZpaawAqbUbs7e26Bha84MRrx/G4XgwLAv[0m
+-kOri8d1vwQzHyY4Tzsc1A4cCAwEAAQ==
+------END PUBLIC KEY-----
+\ No newline at end of file
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2021-01-10 23:44:16[0m
+[92mHash: e259e8bb55022e83339a6984a360444e5d69bb79[0m
+[92mFilepath: projects/factorio/headless/docker_factorio_server/config/server-id.json[0m
+[92mBranch: origin/master[0m
+[92mCommit: Removes factorio project
+[0m
+@@ -0,0 +1,4 @@
++{
++  "id": "[93mMvmp6JrsMDjWTq4skf5F+CI0FXSXVNWtPCA1sRcwDg0=[0m",
++  "secret": "[93mK9nwduThtUwgeuYmNPmhdgYvXZ3JFNTkMHvjAa3Xvzk=[0m"
++}
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2019-07-17 23:18:53[0m
+[92mHash: ae45b7f99c372bb64d50ee0d38ee2a7c2a823006[0m
+[92mFilepath: projects/factorio/headless/docker_factorio_server/config/server-id.json[0m
+[92mBranch: origin/master[0m
+[92mCommit: Audit tools
+[0m
+@@ -1,4 +1,4 @@
+ {
+   "id": "[93mMvmp6JrsMDjWTq4skf5F+CI0FXSXVNWtPCA1sRcwDg0=[0m",
+-  "secret": "[93mK9nwduThtUwgeuYmNPmhdgYvXZ3JFNTkMHvjAa3Xvzk=[0m"
++  "secret": "***REMOVED***"
+ }
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2019-07-15 22:45:04[0m
+[92mHash: fbd8ca1dac7dcf8853cb695d048208b022a861fb[0m
+[92mFilepath: projects/microfrontends/services/home/import-maps[0m
+[92mBranch: origin/master[0m
+[92mCommit: Microfrontends
+
+
+Former-commit-id: 89a1976836c6d760b3b38c89ddb24ae5003fa7ba[0m
+@@ -1 +0,0 @@
+-Subproject commit [93m0a7ba167f2050f0399ea325748b94d70049443dc[0m
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+[92mReason: High Entropy[0m
+[92mDate: 2019-07-15 22:42:08[0m
+[92mHash: 032a68bfc507d98543f118ea259d7567af9ed610[0m
+[92mFilepath: projects/factorio/headless/docker_factorio_server/config/server-id.json[0m
+[92mBranch: origin/master[0m
+[92mCommit: Factorio
+[0m
+@@ -1,4 +0,0 @@
+-{
+-  "id": "[93mMvmp6JrsMDjWTq4skf5F+CI0FXSXVNWtPCA1sRcwDg0=[0m",
+-  "secret": "***REMOVED***"
+-}
+
+~~~~~~~~~~~~~~~~~~~~~
