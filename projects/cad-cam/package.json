@@ -1,0 +1,17 @@
+{
+  "name": "cad-cam",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "snowpack build && (cd build && npx http-server)",
+    "lint": "eslint src --fix"
+  },
+  "devDependencies": {
+    "snowpack": "^3.8.2"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^5.0.0-alpha",
+    "@babylonjs/inspector": "^5.0.0-alpha",
+    "@babylonjs/procedural-textures": "^4.2.0"
+  }
+}

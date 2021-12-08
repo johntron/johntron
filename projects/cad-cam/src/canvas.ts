@@ -1,0 +1,1 @@
+export default (): HTMLCanvasElement => document.querySelector('canvas');
