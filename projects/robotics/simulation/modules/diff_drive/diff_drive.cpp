@@ -6,6 +6,7 @@
 
 namespace gazebo {
     class DiffDrive : public ModelPlugin {
+        std::vector<float> goal = {0, 0};
     public:
         void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/) {
             // Store the pointer to the model
