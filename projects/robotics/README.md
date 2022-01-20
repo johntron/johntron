@@ -1,3 +1,22 @@
+## Running
+
+1. Enable camera with raspi-config
+2. Test video - see below
+3. [Install tensorflow lite](https://www.tensorflow.org/lite/guide/python#install_tensorflow_lite_for_python)
+4. sudo apt install libopenjp2-7 libopenexr-dev libavcodec-dev libavformat-dev libswscale-dev 
+
+## Testing video
+
+On the pi:
+```
+libcamera-vid --listen -o tcp://0.0.0.0:8888 -t 0 --width 1920 --height 1080
+```
+
+In VLC, connect to network stream with:
+```
+tcp/h.264://192.168.1.241:8888
+```
+
 ## Todo
 
 3. Review low-level motor driver code, and design API the diff drive will use
