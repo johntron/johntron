@@ -1,0 +1,47 @@
+
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+
+image:
+  repository: homeassistant/home-assistant
+  pullPolicy: IfNotPresent
+  tag: 2021.4.4
+
+strategy:
+  type: Recreate
+
+env: {}
+  # TZ:
+
+controller:
+  type: statefulset
+volumeClaimTemplates:
+  - name: home-assistant
+    accessMode: ReadWriteOnce
+    size: 5Gi
+    storageClass: local-path
+    mountPath: /config
+
+service:
+  main:
+    type: LoadBalancer
+    loadBalancerIP: 192.168.1.65
+    externalIPs:
+      - 192.168.1.65
+    ports:
+      http:
+        port: 80
+        targetPort: 8123
+
+# Enable devices to be discoverable
+hostNetwork: true
+
+persistence:
+  config:
+    enabled: false
+    type: hostPath
+    hostPath: /opt/local-path-provisioner/home-assistant
+    mountPath: /config
