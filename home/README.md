@@ -8,7 +8,7 @@
 * k9scli.io
 
 
-Install:
+## Install
 
 ```
 (cd metallb && helm upgrade --install metallb bitnami/metallb -f chart/values.yaml)
@@ -16,7 +16,9 @@ Install:
 (cd gocd && helm upgrade --install gocd gocd/gocd -f chart/values.yaml)
 ```
 
-Uninstall:
+Also install the thing for local persistent volume claims (Host Path / local-path-provisioner)
+
+## Uninstall
 
 ```
 helm uninstall metallb gocd coredns
