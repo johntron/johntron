@@ -55,21 +55,21 @@ Format:
 
 ## The list
 
-* Foundation: [Self](./lessons/self.md)
-* Foundation: [Personal development](./lessons/personal-development.md)
-* Foundation: [Purpose](./lessons/purpose.md)
-* Foundation: [Health](./lessons/health.md)
-* Foundation: [Planning](./lessons/planning.md)
-* [Memory and concentration](./lessons/memory-and-concentration.md)
-* [Work](./lessons/work.md)
+* Foundation: [Self](lessons/self.md)
+* Foundation: [Personal development](lessons/personal-development.md)
+* Foundation: [Purpose](lessons/purpose.md)
+* Foundation: [Health](lessons/health.md)
+* Foundation: [Planning](lessons/planning.md)
+* [Memory and concentration](lessons/memory-and-concentration.md)
+* [Work](lessons/work.md)
 * Responsibility (acountability?)
 * Calm
 * Fun
 * Adaptation
 * Communication and teamwork
-* [Empathy](./lessons/empathy.md)
-* [Civic duty](./lessons/civic-duty.md)
-* [Love](./lessons/love.md)
+* [Empathy](lessons/empathy.md)
+* [Civic duty](lessons/civic-duty.md)
+* [Love](lessons/love.md)
 * Finances
 * Others: Study, Culture, Technology, STEM
 
