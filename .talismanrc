@@ -1,0 +1,24 @@
+fileignoreconfig:
+- filename: home/homeassistant/README.md
+  checksum: ee7f554c6802392e899b1a0086761e9e2cfb3f2d11fc54794f04730301f18963
+- filename: home/homeassistant/values.yaml
+  checksum: dfdec30eb091620bf75acfb94a9233e3358fdb8c3d7d13910310f901fb08af1b
+- filename: home/network/.env.template
+  checksum: 4c856d47c123a921fb1659df828b50d7370e71ae3e01091545637ed5e7c42566
+- filename: home/network/default-configs/wap.rsc
+  checksum: 3243f0bf73c4f59a6d7f4b4a5fb950dd7134792c934f3530f2d704073a83c60f
+- filename: home/nginx/README.md
+  checksum: 24fdb6f92b4d036d129d83214830df86fa2cbfd54f941947e5ff125f02437dfd
+- filename: home/rstudio/rstudio/templates/_helpers.tpl
+  checksum: b2b0590600f847a37df0a3989e2750a199b99bdd95a26d495cdd83af892e89f2
+- filename: home/rstudio/rstudio/templates/configmap.yaml
+  checksum: 55ded7d65b9c9202704ed38c0b3309d489bc2381384079e73418445200e98cf2
+- filename: home/rstudio/rstudio/templates/deployment.yaml
+  checksum: 5d3f88b96c8b4acfbc68a0aae75a85632eaf2d941137da6350e41295a77d58e2
+- filename: home/rstudio/rstudio/templates/ingress.yaml
+  checksum: 4dbaa605a6eb24b7e0e65775409bd062ff947007a8820b54b7f2eb17fe5fd8f1
+- filename: home/rstudio/rstudio/templates/secret.yaml
+  checksum: f33efbefccb98eef177826f67cc79eb8d3ae3b2b727a5c1a9b8f708f859af27a
+- filename: home/zeppelin/zeppelin-server.yaml
+  checksum: 313a64006c037feaf1c6f504ea0507a30eded1660f8afb8b01dc47b1c71c7374
+version: "1.0"

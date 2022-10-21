@@ -1,2 +1,6 @@
 exported/
 compiled/backups/
+compiled/
+.env
+*.backup
+backups/
