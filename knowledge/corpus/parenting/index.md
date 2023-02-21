@@ -53,8 +53,18 @@ Format:
 * Implementation
 * New ideas, feedback, and results
 
+## Books
+
+* Becomming Brilliant 978-1-4338-2239-1
+* The Science of Parenting 978-1465429780
+* Good Enough Parenting 978-1433839115
+* Imperfect Parenting 978-1-4338-3756-2
+* Perfectionism in Childhood and Adolescence 978-1-4338-3309-0
+* APA Handbook of Adolescent and Young Adult Development 978-1-4338-3314-4
+
 ## The list
 
+* Foundation: [Timing](Timing.md)
 * Foundation: [Self](lessons/self.md)
 * Foundation: [Personal development](lessons/personal-development.md)
 * Foundation: [Purpose](lessons/purpose.md)
