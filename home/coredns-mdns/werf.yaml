@@ -1,8 +1,0 @@
-configVersion: 1
-project: coredns-mdns
-deploy:
-  helmChartDir: home/coredns-mdns/chart/
----
-image: johntron/coredns-mdns
-dockerfile: Dockerfile
-context: home/coredns-mdns

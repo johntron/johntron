@@ -1,8 +1,0 @@
-server:
-  service:
-    type: "LoadBalancer"
-    httpPort: 80
-  ingress:
-    enabled: false
-  persistence:
-    enabled: false
