@@ -1,0 +1,113 @@
+<script src="svgnest/svgnest.js"></script>
+<script src="svgnest/svgparser.js"></script>
+<script src="util/matrix.js"></script>
+<script src="util/pathsegpolyfill.js"></script>
+<script src="util/geometryutil.js"></script>
+<script src="util/clipper.js"></script>
+<script src="util/placementworker.js"></script>
+<script src="util/parallel.js"></script>
+<a href="sample.svg" download>download a sample</a><br />
+<label for="file">Utensils</label><input id="file" type="file" placeholder="Select an SVG" /><br />
+<label for="width">Width (mm)</label><input id="width" type="number" value="350" /><br />
+<label for="depth">Depth (mm)</label><input id="depth" type="number" value="450" /><br />
+<button>Go</button>
+<div id="status"></div>
+<a id="download" download="nested.svg">Download result</a><br />
+<svg id="bin">
+    <rect stroke="blue" stroke-width="2" fill="none" />
+</svg>
+<div id="svg"><svg></svg></div>
+<script>
+    let svg = null;
+    const width = document.querySelector('#width')
+    const depth = document.querySelector('#depth')
+    const go = document.querySelector('button')
+    const download = document.querySelector('#download')
+    let goListener = null
+
+    const bin = document.querySelector('#bin > rect')
+    let svgPreview = document.querySelector('#svg')
+
+    const status = newStatus => {
+        document.querySelector('#status').textContent = newStatus
+        console.log(`Status: ${newStatus}`)
+    }
+    const updateBin = () => {
+        bin.setAttribute('width', width.value)
+        bin.setAttribute('height', depth.value)
+        bin.parentElement.style.width = width.value
+        bin.parentElement.style.height = depth.value
+        status('Bin updated')
+    }
+    const selectSvg = ({ target: file }) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const dummy = document.createElement('div')
+            dummy.innerHTML = event.target.result;
+            svg = dummy.querySelector('svg:first-child')
+            preview([svg])
+            status(`Loaded SVG`)
+        };
+        reader.readAsText(file.files[0]);
+    };
+    const nest = () => {
+        status('Running')
+        SvgNest.parsesvg(svg.outerHTML)
+        SvgNest.setbin(bin)
+        SvgNest.config({ spacing: 10, populationSize: 20, mutationRate: 20, exploreConcave: false, rotations: 16 })
+        go.removeEventListener('click', goListener)
+        go.textContent = 'Stop'
+        goListener = stop
+        go.addEventListener('click', goListener)
+        SvgNest.start(progress, preview)
+        setTimeout(() => SvgNest.stop(), 1000);
+    }
+    const stop = () => {
+        go.textContent = 'Go'
+        SvgNest.stop()
+        go.removeEventListener('click', goListener)
+        goListener = nest
+        go.addEventListener('click', goListener)
+    }
+    const progress = (percent) => {
+        console.log(`Progress: ${percent * 100}`)
+    }
+    const preview = (svglist, efficiency, placed, total) => {
+        let newStatus = '';
+        if (svglist && svglist.length >= 1) {
+            [svg] = svglist
+            while (svgPreview.hasChildNodes()) {
+                svgPreview.removeChild(svgPreview.lastChild)
+            }
+            svgPreview.appendChild(svg)
+            if (SvgNest.working) {
+                createBlob()
+            }
+            newStatus += `SVG Updated. `
+        }
+        if (efficiency) {
+            newStatus += `Efficiency: ${efficiency}. `
+        }
+        if (placed) {
+            newStatus += `Placed: ${placed}. `
+        }
+        if (total) {
+            newStatus += `Total: ${total}.`
+        }
+        if (newStatus != '') {
+            status(newStatus)
+        }
+    }
+    const createBlob = () => {
+        const svgData = svg.outerHTML;
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        download.href = url;
+    }
+
+    document.addEventListener('DOMContentLoaded', updateBin)
+    document.querySelector('[type=file]').addEventListener('change', selectSvg)
+    document.querySelectorAll('#width, #depth').forEach(el => el.addEventListener('change', updateBin))
+    goListener = nest
+    go.addEventListener('click', goListener)
+</script>
